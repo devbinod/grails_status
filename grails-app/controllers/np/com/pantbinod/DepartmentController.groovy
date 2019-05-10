@@ -9,7 +9,6 @@ class DepartmentController {
     def index(){
 
         def departmentList = Department.list()
-        println "departmentList = $departmentList"
         [departmentList : departmentList]
 
     }

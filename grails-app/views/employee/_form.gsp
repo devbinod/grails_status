@@ -16,11 +16,6 @@
 
 
 <div class="row form-row">
-    <label>Address</label>
-    <input type="text" name="address" class="form-control" value="${employee?.address}"/>
-</div>
-
-<div class="row form-row">
     <label>Department</label>
     <input type="text" name="department" class="form-control" value="${employee?.department  }"/>
 </div>

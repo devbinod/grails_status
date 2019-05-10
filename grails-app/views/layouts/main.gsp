@@ -91,12 +91,7 @@
         </a>
 
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="${createLink(controller: 'address',action: 'index')}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Address</span></a>
-            <span>Address</span></a>
-    </li>
+
 
 
 

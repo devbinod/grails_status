@@ -43,22 +43,15 @@
                     <td>${e.wardNo}</td>
                     <td>${e.tole}</td>
 
-                    <td>
-                        <a href="${createLink(controller: 'address', action: 'delete', params: [id: e.id])}"
-                           class="btn btn-danger"
-                           onclick="return confirm('Are you sure you want to delete?')">Delete</a>
-                        <a href="${createLink(controller: 'address', action: 'edit', params: [id: e.id])}"
-                           class="btn btn-success">Update</a>
-                    </td>
                 </tr>
 
             </g:each>
 
             </table>
 
-            <g:paginate total="${totalCount}"/>
+
     </div>'
-======>>>>
+
 </div>
 
 </body>

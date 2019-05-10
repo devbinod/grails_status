@@ -8,7 +8,8 @@ class Address {
     Integer wardNo
     String tole
     Boolean isTemporary = false
-
+    String status= StatusList.DRAFT.toString()
+    Employee employee
 
     static constraints = {
         wardNo nullable: true

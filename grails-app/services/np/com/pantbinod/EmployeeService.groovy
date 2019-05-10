@@ -1,6 +1,6 @@
 package np.com.pantbinod
 
-import grails.gorm.transactions.Transactional
+import grails.transaction.Transactional
 
 @Transactional
 class EmployeeService {
@@ -13,7 +13,6 @@ class EmployeeService {
 
     def employeeList(params){
 
-
         def employeeList = Employee.createCriteria().list (){
 
             if(params?.status){
@@ -25,7 +24,7 @@ class EmployeeService {
     }
 
     def saveEmployee(params){
-
+        println "params = $params"
         Employee employee = getEmployee(params.long('id'))
         if(!employee){
             employee = new Employee()

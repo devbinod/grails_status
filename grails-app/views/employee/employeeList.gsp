@@ -53,31 +53,45 @@
                       <td>${e.firstname}</td>
                       <td>${e.middlename}</td>
                       <td>${e.lastname}</td>
-                      <td>${e.address}</td>
+                      <td>${e?.address?.state+"/" +e?.address?.district +"/"+e?.address?.localunit+"/"+e?.address?.wardNo+"/"+e?.address?.tole}</td>
                       <td>${e.department}</td>
                       <td>
 
-                          <a href="${createLink(controller: 'employee', action: 'updateEmployee',params: [id:e.id])}"
-                              class="btn btn-success">Update</a>
+%{--                          <a href="${createLink(controller: 'employee', action: 'updateEmployee',params: [id:e.id])}"--}%
+%{--                              class="btn btn-success">Update</a>--}%
+
+
+                          <g:if test="${e?.address==null}">
+                              ===
+                              <a href="${createLink(controller: 'address', action: 'create',params: [id:e?.id])}"
+                                 class="btn btn-success">Add Address</a>
+                          </g:if>
+
+
+                          <g:else>
+                              ====>>>>${}
+                                  <a href="${createLink(controller: 'address', action: 'edit',params: [id:e?.address?.id])}"
+                                 class="btn btn-success">Update Address</a>
+                          </g:else>
 
 
                       </td>
-                      <td>
-                          <g:if test="${e?.status!=StatusList.DRAFT.toString()}">
-                              <a href="${createLink(controller: 'employee', action: 'deleteEmployee', params: [id: e?.id,status:StatusList.DRAFT.toString()])}" class="btn btn-info">Draft</a>
+%{--                      <td>--}%
+%{--                          <g:if test="${e?.status!=StatusList.DRAFT.toString()}">--}%
+%{--                              <a href="${createLink(controller: 'employee', action: 'deleteEmployee', params: [id: e?.id,status:StatusList.DRAFT.toString()])}" class="btn btn-info">Draft</a>--}%
 
-                          </g:if>
+%{--                          </g:if>--}%
 
-                          <g:if test="${e?.status!=StatusList.TRASH.toString()}">
-                              <a href="${createLink(controller: 'employee', action: 'deleteEmployee', params: [id: e?.id,status:StatusList.TRASH.toString()])}" class="btn btn-danger">Trash</a>
+%{--                          <g:if test="${e?.status!=StatusList.TRASH.toString()}">--}%
+%{--                              <a href="${createLink(controller: 'employee', action: 'deleteEmployee', params: [id: e?.id,status:StatusList.TRASH.toString()])}" class="btn btn-danger">Trash</a>--}%
 
-                          </g:if>
+%{--                          </g:if>--}%
 
-                          <g:if test="${e?.status!=StatusList.PUBLISH.toString()}">
-                              <a href="${createLink(controller: 'employee', action: 'deleteEmployee', params: [id: e?.id,status:StatusList.PUBLISH.toString()])}" class="btn btn-success">Publish</a>
+%{--                          <g:if test="${e?.status!=StatusList.PUBLISH.toString()}">--}%
+%{--                              <a href="${createLink(controller: 'employee', action: 'deleteEmployee', params: [id: e?.id,status:StatusList.PUBLISH.toString()])}" class="btn btn-success">Publish</a>--}%
 
-                          </g:if>
-                      </td>
+%{--                          </g:if>--}%
+%{--                      </td>--}%
                   </tr>
 
               </g:each>

@@ -1,5 +1,7 @@
 package np.com.pantbinod
 
+import grails.converters.JSON
+
 class EmployeeController {
 
     def employeeService
@@ -9,9 +11,16 @@ class EmployeeController {
 
     def employeeList(){
         def(employeeList) = employeeService.employeeList(params)
-        [employeeList: employeeList]
+        [employeeList : employeeList]
     }
 
+
+    def employeeDetail(){
+        def(employeeList) = employeeService.employeeList(params)
+        def mapData = [:]
+        mapData.data= employeeList
+        render mapData as JSON
+    }
     def addEmployee(){ }
 
 
