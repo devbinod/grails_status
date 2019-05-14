@@ -92,6 +92,13 @@
 
     </li>
 
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="${createLink(controller: 'staff',action: 'index')}" >
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Staff</span>
+        </a>
+
+    </li>
 
 
 

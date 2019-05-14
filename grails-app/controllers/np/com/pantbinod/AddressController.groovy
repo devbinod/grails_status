@@ -21,22 +21,30 @@ class AddressController {
     }
 
     def create() {
-        [employee: params?.id]
+        [domainId: params?.domainId,
+         domainName: params?.domainName]
+
     }
 
     def save() {
-        def employee = employeeService.getEmployee(params.long("employee"))
+
+             String domainName = params?.domainName
+             Staff staff
+            if(domainName.equalsIgnoreCase("staff")){
+                staff= Staff.findById(params?.domainId)
+            }
         def address = new Address()
         address.properties = params
-        address.employee=employee
-        if(address.save(flush: true, failOnError: true)){
-            employee.address = address
-            employee.save(flush: true, failOnError :true)
+        address.staff = staff
+        if(address.save(flush: true, failOnError :true)){
+            staff.address = address
+            staff.save(flush: true, failOnError :true)
         }
 
+        redirect(controller: 'staff', action: 'show',params:[id: staff?.id])
 
-        redirect(controller: 'employee', action: 'employeeList')
-    }
+
+                }
 
 
     def delete() {

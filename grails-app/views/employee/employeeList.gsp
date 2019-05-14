@@ -62,14 +62,12 @@
 
 
                           <g:if test="${e?.address==null}">
-                              ===
                               <a href="${createLink(controller: 'address', action: 'create',params: [id:e?.id])}"
                                  class="btn btn-success">Add Address</a>
                           </g:if>
 
 
                           <g:else>
-                              ====>>>>${}
                                   <a href="${createLink(controller: 'address', action: 'edit',params: [id:e?.address?.id])}"
                                  class="btn btn-success">Update Address</a>
                           </g:else>

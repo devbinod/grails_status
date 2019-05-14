@@ -9,8 +9,10 @@
 
     <div class="container-fluid">
             <g:form action="save" method="post">
-                <input type="hidden" name="employee" value="${employee}"/>
-                <g:render template="form"/>
+
+                <input type="hidden" name="domainId" value="${domainId}"/>
+                <input type="hidden" name="domainName" value="${domainName}"/>
+                    <g:render template="form"/>
                 <input type="submit" class="btn btn-success"/>
             </g:form>
 

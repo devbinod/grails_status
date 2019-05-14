@@ -10,10 +10,12 @@ class Address {
     Boolean isTemporary = false
     String status= StatusList.DRAFT.toString()
     Employee employee
-
+    Staff staff
     static constraints = {
         wardNo nullable: true
         tole blank: true, nullable: true
+        staff nullable: true
+        employee nullable: true
 
     }
 }
