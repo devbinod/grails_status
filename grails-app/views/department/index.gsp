@@ -22,6 +22,18 @@
                         <td>Action</td>
 
                     </tr>
+                    <g:each in="${departmentList}" var="d" status="i">
+
+                      <tr>
+                          ${d}
+                          <td>${i+1}</td>
+                          <td>${d?.departmentId}</td>
+
+                          <td>${d?.departmentName}</td>
+                          <td>${d?.noOfEmployee}</td>
+                          <td>Action</td>
+                      </tr>
+                    </g:each>
 
                 </table>
             </div>

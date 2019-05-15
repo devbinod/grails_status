@@ -19,5 +19,6 @@ class DepartmentController {
         def deparment= new Department()
         deparment.properties = params
         deparment.save(flush: true,failOnError :true)
+        redirect(action: 'index')
     }
 }

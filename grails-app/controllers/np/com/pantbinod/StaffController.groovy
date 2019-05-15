@@ -47,4 +47,16 @@ class StaffController {
         redirect(action: 'index')
     }
 
+
+
+    def addDepartment(){
+
+        println "params = $params"
+
+        def department= Department.findById(params?.long('departmentId'))
+        def staff= Staff.findById(params?.long('staffId'))
+        staff.department = department
+        staff.save(flush: true, failOnError :true)
+
+    }
 }

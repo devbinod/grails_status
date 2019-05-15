@@ -7,6 +7,14 @@
     </head>
     <body>
 
+            <div class="container-fluid">
+                <g:form action="saveDeparment" method="post">
+                    <g:render template="form"/>
+                    <input type="submit" value="Save"/>
+                </g:form>
+
+            </div>
+
 
     </body>
 </html>

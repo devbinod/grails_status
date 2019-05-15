@@ -53,13 +53,19 @@ class AddressController {
     }
 
     def edit() {
-        [address: Address.findById(params.long('id'))]
+        [address: Address.findById(params.long('addressId')),
+            domainName: params?.domainName
+        ]
     }
 
     def update() {
+        def domainName = params?.domainName
         def address = Address.findById(params.long('id'))
         address.properties = params
         address.save(flush: true, failOnError: true)
-        redirect(controller: 'employee', action: 'employeeList')
+        if(address?.staff){
+            redirect(controller: 'staff', action: 'show',params: [id: address?.staff?.id])
+        }
+
     }
 }

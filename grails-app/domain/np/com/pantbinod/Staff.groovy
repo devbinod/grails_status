@@ -6,12 +6,11 @@ class Staff {
     String firstname
     String middlename
     String lastname
-    String department
     Integer experience
     String post
     String status = StatusList.DRAFT.toString()
     Address address
-
+    Department department
     static constraints = {
         middlename nullable: true
         experience nullable: true
