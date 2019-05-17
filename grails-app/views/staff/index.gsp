@@ -4,7 +4,9 @@
 <head>
     <meta name="layout" content="main"/>
     <title>Employee List</title>
-</head>
+
+
+    </head>
 <body>
 
 
@@ -14,12 +16,9 @@
         <a href="${createLink(controller: 'staff', action: 'create')}" CLASS="btn btn-success">Add Staff</a>
     </div>
 
-    <div class="row float-right">
-        <a href="${createLink(controller: 'employee',action: 'employeeList')}" class="btn btn-success">All</a>
-        <a href="${createLink(controller: 'employee',action: 'employeeList', params: [status: StatusList.PUBLISH.toString()])}" class="btn btn-primary">Publish</a>
-        <a href="${createLink(controller: 'employee',action: 'employeeList', params: [status: StatusList.DRAFT.toString()])}" class="btn btn-secondary">Draft</a>
-        <a href="${createLink(controller: 'employee',action: 'employeeList',params: [status: StatusList.TRASH.toString()])}" class="btn btn-danger">Trash</a>
-    </div>
+
+    <input type="text" id="fullname" onkeyup="searchData()"/>
+    <input type="text" id="status" onkeyup="searchData()"/>
 
 
     <g:if test="${flash.message}">
@@ -34,35 +33,16 @@
     </g:if>
 
 
-
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered" id="myTable" width="100%">
+       <thead>
         <tr>
             <td>Staff Id</td>
-            <td>First Name</td>
-            <td>Middle Name</td>
-            <td>Last Name</td>
+            <td> Name</td>
+
             <td>Status</td>
             <td>Action</td>
         </tr>
-
-        <g:each in="${staffList}" status="i" var="e">
-            <tr>
-                <td>${e?.staffId}</td>
-                <td>${e.firstname}</td>
-                <td>${e.middlename}</td>
-                <td>${e.lastname}</td>
-                <td>${e?.status}</td>
-                <td>
-                    <a href="${createLink(controller: 'staff', action: 'show', params: [id: e?.id])}">View</a>
-                    <a href="${createLink(controller: 'staff', action: 'edit', params: [id: e?.id])}">Update</a>
-                    <a href="${createLink(controller: 'staff', action: 'delete', params: [id: e?.id])}">Delete</a>
-                </td>
-
-
-            </tr>
-
-        </g:each>
-
+       </thead>
     </table>
 
 
@@ -71,7 +51,44 @@
 </div>
 
 
+<script>
 
+$(document).ready(function () {
+    searchResult();
+
+
+
+})
+    function searchResult(fullname,status) {
+    $('#myTable').DataTable().destroy();
+        $('#myTable').DataTable( {
+            "processing": true,
+            "serverSide": true,
+            "searching":false,
+            "ajax": {
+                "url": "${createLink(controller: 'staff', action: 'getData')}",
+                "data": function (d) {
+                    d.fullname= fullname;
+                    d.status=status;
+                }
+            },
+            "columns": [
+                { "data": "staffId" },
+                { "data": "name" },
+                { "data": "status" },
+
+
+
+            ]
+        } );
+    }
+
+    function searchData() {
+
+        searchResult($('#fullname').val(),$('#status').val())
+
+    }
+</script>
 </body>
 
 </html>

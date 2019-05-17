@@ -6,6 +6,7 @@ class Staff {
     String firstname
     String middlename
     String lastname
+    String fullName
     Integer experience
     String post
     String status = StatusList.DRAFT.toString()
@@ -15,5 +16,15 @@ class Staff {
         middlename nullable: true
         experience nullable: true
         address nullable: true
+        department nullable: true
+    }
+
+
+    def beforeValidate(){
+        fullName = firstname+ " "
+        if(middlename){
+            fullName = fullName + middlename + " "
+        }
+        fullName = fullName+ lastname
     }
 }

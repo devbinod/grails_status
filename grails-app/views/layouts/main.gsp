@@ -10,9 +10,10 @@
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>
 
     <asset:stylesheet src="application.css"/>
+    <asset:javascript src="application.js"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 
-</head>
-
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <body id="page-top">
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -115,7 +116,6 @@
 <g:layoutBody/>
 </div>
 
-<asset:javascript src="application.js"/>
 
 </body>
 </html>

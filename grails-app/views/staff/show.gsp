@@ -100,8 +100,13 @@
 
                                     </div>
 
+                                    <div class="row" id="departmentDetail">
+                                        <g:render template="departmentDetail" model="[department: staff?.department]"/>
 
+                                    </div>
+                                    <div class="row" id="showDepartment">
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -114,6 +119,12 @@
         function saveDepartment() {
 
 
+            var departmentId =  $('#departmentId').val()
+            if(departmentId=== null || departmentId === ''){
+                alert("Please select department")
+                return
+            }
+
             $.ajax({
 
                 url: "${createLink(controller: 'staff', action: 'addDepartment')}",
@@ -122,10 +133,11 @@
                     staffId : "${staff?.id}"
                 },
                 success: function (resp) {
-                    alert("Sucessfully Saved..")
+                    $("#departmentDetail").hide();
+                    $('#showDepartment').html(resp)
                 },
                 error: function (e) {
-                    alert(e)
+                    alert("error")
 
                 }
             })

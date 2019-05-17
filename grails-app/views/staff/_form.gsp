@@ -24,7 +24,7 @@
 
 <div class="row form-row">
     <label>Department</label>
-    <input type="text" name="department" class="form-control" value="${staff?.department  }"/>
+    <input type="text" name="department" class="form-control" value="${staff?.department?.id}"/>
 </div>
 
 
