@@ -88,7 +88,7 @@
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="${createLink(controller: 'employee',action: 'employeeList')}" >
             <i class="fas fa-fw fa-folder"></i>
-            <span>Employee</span>
+            <span>Employees</span>
         </a>
 
     </li>
